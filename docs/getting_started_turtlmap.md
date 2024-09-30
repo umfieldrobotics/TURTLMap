@@ -10,6 +10,10 @@ You can find the data [on this Google Drive Link](https://drive.google.com/drive
 Use the `launch/turtlmap.launch file`.
 - For log1, set the start flag `-s` in the rosbag player node as **20**
 - For log2, set the start flag `-s` in the rosbag player node as **15**
+Simply run:
+```
+roslaunch turtlmap turtlmap.launch
+```
 
 <!-- ### Run command
 `rosbag play /frog-drive/bluerov/UI2024/0111/d3_r10_imu.bag /frog-drive/bluerov/UI2024/0111/d3_r10.bag /home/jingyu/frog/zed_test_ws/src/d3_r10_zed_fixed_ts.bag  --clock -s 8 /tf:=/tf_old /tf_static:=/tf_static_old`
