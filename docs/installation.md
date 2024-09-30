@@ -24,7 +24,7 @@ Clone TURTLMap into a catkin workspace by using the following instructions:
 ```bash
 mkdir -p ~/turtlmap_ws/src
 cd ~/turtlmap_ws/src
-git clone [NEED TO ADD REPO]
+git clone git@github.com:umfieldrobotics/TURTLMap.git
 ```
 ### Installing the required packages
 We provide a `.rosinstall` file that contains the required packges to build and run TURTLMap. This can be used as follows:
@@ -33,10 +33,10 @@ cd ~/turtlmap_ws/src
 wstool init
 
 # for https
-wstool merge onr_posegraph_backend_online/install/turtlmap_ros_https.rosinstall
+wstool merge TURTLMap/install/turtlmap_ros_https.rosinstall
 
 # for ssh
-wstool merge onr_posegraph_backend_online/install/turtlmap_ros_ssh.rosinstall
+wstool merge TURTLMap/install/turtlmap_ros_ssh.rosinstall
 wstool update
 ```
 This will place all the necessary packages into the `src/` directory of you workspace.

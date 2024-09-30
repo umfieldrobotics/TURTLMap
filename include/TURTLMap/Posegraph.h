@@ -10,9 +10,9 @@
 #include <gtsam/slam/BetweenFactor.h>
 #include <gtsam/slam/dataset.h>
 #include <gtsam/slam/PoseRotationPrior.h>
-#include <onr_posegraph_backend_online/PoseGraphParameters.h>
-#include <onr_posegraph_backend_online/BluerovBarometerFactor.h>
-#include <onr_posegraph_backend_online/VelocityIntegrationFactor.h>
+#include <TURTLMap/PoseGraphParameters.h>
+#include <TURTLMap/BluerovBarometerFactor.h>
+#include <TURTLMap/VelocityIntegrationFactor.h>
 
 // for including the smoother
 #include <gtsam_unstable/nonlinear/IncrementalFixedLagSmoother.h>

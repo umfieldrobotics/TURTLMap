@@ -41,11 +41,11 @@ catkin_simple()
 
 cs_add_library(${PROJECT_NAME}
   # Include files are just here for IDEs
-  include/onr_posegraph_backend_online/PosegraphBackendOnline.h
-  include/onr_posegraph_backend_online/Posegraph.h
-  include/onr_posegraph_backend_online/PoseGraphParameters.h
-  include/onr_posegraph_backend_online/BluerovBarometerFactor.h
-  include/onr_posegraph_backend_online/VelocityIntegrationFactor.h
+  include/TURTLMap/PosegraphBackendOnline.h
+  include/TURTLMap/Posegraph.h
+  include/TURTLMap/PoseGraphParameters.h
+  include/TURTLMap/BluerovBarometerFactor.h
+  include/TURTLMap/VelocityIntegrationFactor.h
 
   src/Posegraph.cpp
   src/PosegraphBackendOnline.cpp
