@@ -43,6 +43,7 @@ wstool merge TURTLMap/install/turtlmap_ros_https.rosinstall
 # for ssh
 wstool merge TURTLMap/install/turtlmap_ros_ssh.rosinstall
 
+# bring in all the dependencies
 wstool update
 ```
 This will place all the necessary packages into the `src/` directory of you workspace.
