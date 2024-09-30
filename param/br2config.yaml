@@ -1,0 +1,120 @@
+%YAML 1.1
+---
+left_cam_params:
+    T_SC: # left? TODO: check tf transform between camera and IMU
+        [-0.00468613, -0.01195502, 0.99991756, 0.0385784,
+            -0.99998901, -0.00010415, -0.00468771, 0.01994332,
+            0.00016018, -0.99992853, -0.01195441, 0.00034488,
+            0., 0., 0., 1.]
+    image_dimension: [960, 540]
+    distortion_coefficients: [0.07827179198702647, -0.07918548339049711, -0.004273388639710503, 0.0005499806469086271] #@Jingyu: change to test raw images
+    distortion_type: radialtangential
+    focal_length: [933.4224853515625, 931.6614990234375] #projection matrix as pre-rectified images have been used # TODO: Need to update these
+    principal_point: [487.34991455078125, 271.66021728515625] #projection matrix as pre-rectified images have been used # TODO: Need to update these
+right_cam_params:
+    T_SC: # right?
+        [-0.00259898, -0.01205242, 0.99992399, 0.03879892,
+        -0.99999661, -0.00009436, -0.00260031, -0.04315496,
+        0.0001257, -0.99992736, -0.01205213, 0.00032988,
+        0., 0., 0., 1.]
+    image_dimension: [960, 540]
+    distortion_coefficients: [0.07986465560981432, -0.08260597766824908, -0.003131079845709597, 0.00025025542029397433] #pre-rectified images
+    distortion_type: radialtangential
+    focal_length: [930.99267578125, 929.2169799804688] #projection matrix as pre-rectified images have been used
+    principal_point: [492.89459228515625, 276.31011962890625]  #projection matrix as pre-rectified images have been used
+camera_params:
+  camera_rate: 30 # @Jingyu: make sure this matches the exact camera rate!!
+  sigma_absolute_translation: 0.0
+  sigma_absolute_orientation: 0.0
+  sigma_c_relative_translation: 0.0 # below 1.0e-6 ruines numerics...
+  sigma_c_relative_orientation: 0.0 # below 1.0e-6 ruines numerics...
+
+imu_preintegration_params:
+    gap_time: 1.0 # key frame frequency
+
+
+# GX5-25 IMU TODO: Jingyu check the datasheet again
+imu_params: # TODO: also check if their IMU has same convention as ours (should all be ros convention tho)
+    g: 9.81007 # Earth's acceleration due to gravity [m/s^2] - should be positive value
+    # change to our values
+    acc_max: 78.48000336
+    gyro_max: 17.4533
+    gyro_noise_density: 8.726646e-05 # gyro noise density [rad/s/sqrt(Hz)] 0.00016017
+    acc_noise_density: 0.00024525 # accelerometer noise density [m/s^2/sqrt(Hz)] 0.00071376
+    gyro_bias_prior: 0.0 # gyro bias prior [rad/s]
+    acc_bias_prior: 0.0 # accelerometer bias prior [m/s^2]
+    gyro_random_walk: 0.00061324618 # gyro drift noise density [rad/s^s/sqrt(Hz)] 0.00000165
+    acc_random_walk: 0.00620438876 # accelerometer drift noise density [m/s^2/sqrt(Hz)] 0.00002874
+    integration_covariance: 0.0001
+    imu_rate: 250.0
+    T_BS:
+    # indentity
+        [1.0000, 0.0000, 0.0000, 0.0000,
+         0.0000, 1.0000, 0.0000, 0.0000,
+         0.0000, 0.0000, 1.0000, 0.0000,
+         0.0000, 0.0000, 0.0000, 1.0000]
+
+sonar_params:
+    T_SSo:  
+        [0.0000, 0.0000, 1.0000, 0.365,
+         0.0000, -1.0000, 0.0000, 0.0950005,
+         1.0000, 0.0000, 0.0000, 0.0699993,
+         0.0000, 0.0000, 0.0000, 1.0000] # Stereo Rig V1
+
+dvl_params:
+
+    T_SD:
+        [-0.00298184, -0.99999099, -0.00302088, 0.001,
+        0.0130104,  0.00298184, -0.99991092, -0.04,
+        0.99991092, -0.00302088,  0.01300139, 0.113,
+        0.0, 0.0, 0.0, 1.0] # Iowa 2024 Config S=the new IMU 0 degree
+    
+    T_W_WD:
+        [-0.4066987, -0.89092207, -0.20212356, 1.9856689,
+        -0.84402998, 0.45109541, -0.29004549, 0.24012306,
+        0.34958496, 0.05263721, -0.93542487, -0.70109909,
+        0, 0, 0, 1]
+    prior_bias: 0.0
+    fom_threshold: 0.01 # 0.01 is a good threshold based on d3_r10 (wave log)
+barometer_params:
+    T_SBa:
+        [1.0000, 0.0000, 0.0000, 0.0000,
+         0.0000, 1.0000, 0.0000, 0.0000,
+         0.0000, 0.0000, 1.0000, 0.0000,
+         0.0000, 0.0000, 0.0000, 1.0000]
+    atm_press: 993.3999633789062
+        
+
+sensor_topics:
+  dvl: "/dvl/data"
+  dvl_local_position: "/dvl/local_position"
+  imu: '/nav/filtered_imu/data'
+  left_cam: '/zedm/zed_node/left_raw/image_raw_color'
+  right_cam: '/zedm/zed_node/right_raw/image_raw_color'
+  sonar: "/ping_sonar/range"
+  barometer: "/BlueROV/pressure2_fluid"
+
+sensor_list:
+    isImuUsed: true
+    isBaroUsed: true
+    isDvlUsed: true
+    isSonarUsed: false
+    areCamsUsed: false
+
+useOrbSlam: false
+
+optimization_params:
+    lambdaUpperBound: 1e10
+    lambdaLowerBound: 1e-10
+    initialLambda: 1e-5
+    maxIterations: 500
+    relativeErrorTol: 1e-4
+    absoluteErrorTol: 1e-4
+
+num_iters: 1000
+
+using_smoother: true
+
+kf_gap_time: 1.0
+
+using_pseudo_dvl: true
