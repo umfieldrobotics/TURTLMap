@@ -1,4 +1,7 @@
 # TURTLMap Installation
+## System Requirements
+We recommend using Ubuntu 20.04 LTS for running TURTLMap. We also recommend using ROS Noetic for running the code. The Python version we tested is 3.8.
+
 ## GTSAM Installation
 We use [GTSAM](https://gtsam.org/) to implement the factor graph that gets used for the localization of the robot. Below are the instructions on how to build the version of GTSAM that is shipped with the TURTLMap codebase:
 
@@ -25,6 +28,9 @@ Clone TURTLMap into a catkin workspace by using the following instructions:
 mkdir -p ~/turtlmap_ws/src
 cd ~/turtlmap_ws/src
 git clone git@github.com:umfieldrobotics/TURTLMap.git
+# if you use https, use the following command
+git clone https://github.com/umfieldrobotics/TURTLMap.git
+
 ```
 ### Installing the required packages
 We provide a `.rosinstall` file that contains the required packges to build and run TURTLMap. This can be used as follows:
@@ -34,9 +40,9 @@ wstool init
 
 # for https
 wstool merge TURTLMap/install/turtlmap_ros_https.rosinstall
-
 # for ssh
 wstool merge TURTLMap/install/turtlmap_ros_ssh.rosinstall
+
 wstool update
 ```
 This will place all the necessary packages into the `src/` directory of you workspace.

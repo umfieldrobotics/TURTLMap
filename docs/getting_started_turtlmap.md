@@ -14,16 +14,3 @@ Simply run:
 ```
 roslaunch turtlmap turtlmap.launch
 ```
-
-<!-- ### Run command
-`rosbag play /frog-drive/bluerov/UI2024/0111/d3_r10_imu.bag /frog-drive/bluerov/UI2024/0111/d3_r10.bag /home/jingyu/frog/zed_test_ws/src/d3_r10_zed_fixed_ts.bag  --clock -s 8 /tf:=/tf_old /tf_static:=/tf_static_old`
-
-`rosbag play /frog-drive/bluerov/UI2024/0113/d4_r13_imu.bag /frog-drive/bluerov/UI2024/0113/d4_r13.bag /home/jingyu/frog/zed_test_ws/src/d4_r13_zed_fixed_ts.bag  --clock -s 9 /tf:=/tf_old /tf_static:=/tf_static_old`
-
-`rosbag play '/home/user/orin/d4_r10.bag' '/home/user/orin/d4_r10_imu.bag' '/home/user/orin/d4_r10_zed_fixed_ts.bag'  --clock /tf:=/tf_old /tf_static:=/tf_static_old -s 15`
-
-`rosbag play '/home/user/orin/d4_r10.bag' '/home/user/orin/d4_r10_imu.bag' '/home/user/orin/d4_r10_zed_fixed_ts.bag'  --clock /tf:=/tf_old /tf_static:=/tf_static_old -s 10`
-
-`rosbag play '/home/user/orin/d4_r13.bag' '/home/user/orin/d4_r13_imu.bag' '/home/user/orin/d4_r13_zed_fixed_ts.bag' --clock /tf:=/tf_old /tf_static:=/tf_static_old -s 20`
-
-`rosbag play '/home/user/orin/d4_r13.bag' '/home/user/orin/d4_r13_imu.bag' '/home/user/orin/d4_r13_zed_fixed_ts.bag' --clock /tf:=/tf_old /tf_static:=/tf_static_old -s 9` -->
